@@ -1,0 +1,9 @@
+Sample
+
+Device: <DEVICE_NAME>
+Role: <DEVICE_ROLE>
+Model: <MODEL>
+Date: <YYYY-MM-DD>
+Status: As-built configuration
+
+<#show running-config>
