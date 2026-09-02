@@ -18,7 +18,7 @@ This architecture using several technologies such us :
 
 ## Topology
 
-The diagram of this architecture can be found in Multi-site_OSPF-network/design/
+The diagram of this architecture can be found in (design/)
 
 ## Documentation
 
