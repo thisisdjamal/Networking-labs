@@ -6,10 +6,11 @@ This network architecture connects a main headquarters (Agency A) and a branch o
 ## Objectives
 The key objectives of this architecture are :
 
-High Availability: Eliminate single points of failure at HQ through dual-homed distribution uplinks and inter-site link aggregation. 
-Perimeter Security: Sandbox public HTTPS/DNS servers inside a dedicated DMZ to protect internal host data. 
-Network Segmentation: Reduced broadcast domains using isolated VLANs. 
-Cost-Optimized Scalability: Deploy a full 3-tier architecture at HQ for performance, paired with a collapsed core at the branch office to reduce hardware costs. Efficient IP Allocation: Use VLSM (/27 for departments and /30 for point-to-point transit links) to eliminate IPv4 waste.
+- High Availability: Eliminate single points of failure at HQ through dual-homed distribution uplinks and inter-site link aggregation. 
+- Perimeter Security: Sandbox public HTTPS/DNS servers inside a dedicated DMZ to protect internal host data. 
+- Network Segmentation: Reduced broadcast domains using isolated VLANs. 
+- Cost-Optimized Scalability: Deploy a full 3-tier architecture at HQ for performance, paired with a collapsed core at the branch office to reduce hardware costs.
+- Efficient IP Allocation: Use VLSM (/27 for departments and /30 for point-to-point transit links) to eliminate IPv4 waste.
 
 ## Technologies
 
