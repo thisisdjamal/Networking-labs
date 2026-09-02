@@ -16,17 +16,13 @@ Cost-Optimized Scalability: Deploy a full 3-tier architecture at HQ for performa
 This architecture using several technologies such us :
 - VLAN, IPv4 addressing , Inter-VLAN Routing, DHCP, OSPF, HSRP, LACP, BGP, Zone-Based Firewall, NAT, L3 routing
 
-## Topology
-
-The diagram of this architecture can be found in (design/)
-
 ## Documentation
 
-- [Design](design/)
-- [Addressing](addressing/)
-- [Configurations](configurations/)
+- [Design](design/) contains the diagram of the network
+- [Addressing](addressing/) explains how the whole network was addressed
+- [Configurations](configurations/) contains the configurations for each device
 - [Validation](validation/)
-- [Packet Tracer Files](packet-tracer/)
+- [Packet Tracer Files](packet-tracer/) contains .pkt lab file
 - [Changelog](CHANGELOG.md)
 
 ## Limitations
