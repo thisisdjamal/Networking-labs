@@ -1,38 +1,107 @@
-## Multi-site_OSPF-network
+# Multi-site OSPF Network
 
 ## Overview
-This network architecture connects a main headquarters (Agency A) and a branch office (Agency B) over a dedicated cross-site backbone with redundant internet edges (simulated internet connection). Agency A implements a fully redundant 3-tier switching layout (Core, Distribution, Access) to maximize uptime, whereas Agency B uses a cost-effective collapsed-core model. Internal departmental traffic is strictly segmented across custom VLANs (/27 subnets) using the address 172.16.0.0, while public-facing web and DNS servers are sandboxed in a dedicated DMZ. Point-to-point links are segmented across /30 subnets using 10.0.0.0 range while internet links use public IPs.
+
+This project implements a multi-site enterprise network connecting a **Headquarters (Agency A)** and a **Branch Office (Agency B)** through a dedicated inter-site backbone with redundant Internet edges in a simulated environment.
+
+Agency A implements a **fully redundant three-tier network architecture** composed of Core, Distribution, and Access layers to maximize availability and minimize single points of failure. Agency B uses a **collapsed-core architecture**, combining core and distribution functions to provide a more cost-effective design suitable for a smaller site.
+
+Internal departmental networks are segmented using dedicated **VLANs**, with each VLAN assigned a `/27` IPv4 subnet from the `172.16.0.0/16` private address space. Public-facing services, including **HTTPS and DNS servers**, are isolated within a dedicated **DMZ (Demilitarized Zone)** to limit the exposure of internal resources.
+
+Point-to-point routed links use `/30` subnets from the `10.0.0.0/8` private address space, while simulated Internet-facing links use public IPv4 addressing.
+
+The routing architecture relies primarily on **OSPF** for dynamic internal routing, while **BGP** is used at the Internet edge to simulate external routing.
 
 ## Objectives
-The key objectives of this architecture are :
 
-- High Availability: Eliminate single points of failure at HQ through dual-homed distribution uplinks and inter-site link aggregation. 
-- Perimeter Security: Sandbox public HTTPS/DNS servers inside a dedicated DMZ to protect internal host data. 
-- Network Segmentation: Reduced broadcast domains using isolated VLANs. 
-- Cost-Optimized Scalability: Deploy a full 3-tier architecture at HQ for performance, paired with a collapsed core at the branch office to reduce hardware costs.
-- Efficient IP Allocation: Use VLSM (/27 for departments and /30 for point-to-point transit links) to eliminate IPv4 waste.
+The main objectives of this architecture are:
+
+* **High Availability:** Provide network redundancy at the headquarters through dual-homed distribution switches, redundant paths, HSRP, and link aggregation.
+* **Perimeter Security:** Isolate public-facing services within a dedicated DMZ and control traffic between security zones using a Zone-Based Firewall.
+* **Network Segmentation:** Separate departmental traffic into dedicated VLANs to reduce broadcast domains and improve traffic isolation.
+* **Dynamic Routing:** Use OSPF to automatically exchange internal routes and provide dynamic path selection across the multi-site infrastructure.
+* **Internet Edge Redundancy:** Simulate redundant Internet connectivity using multiple edge routers and BGP.
+* **Cost-Optimized Scalability:** Deploy a full three-tier architecture at the headquarters while using a collapsed-core model at the branch to reduce infrastructure complexity and hardware requirements.
+* **Efficient IPv4 Allocation:** Apply VLSM to allocate `/27` subnets to departmental networks and `/30` subnets to point-to-point transit links, minimizing IPv4 address waste.
 
 ## Technologies
 
-This architecture using several technologies such us :
-- VLAN, IPv4 addressing , Inter-VLAN Routing, DHCP, OSPF, HSRP, LACP, BGP, Zone-Based Firewall, NAT, L3 routing
+The architecture uses the following networking technologies and protocols:
+
+* **VLAN** — Logical segmentation of the Layer 2 network into separate broadcast domains.
+* **IPv4 & VLSM** — Structured and efficient IPv4 address allocation.
+* **Inter-VLAN Routing** — Layer 3 communication between departmental VLANs.
+* **DHCP** — Automatic assignment of IP configuration to end devices.
+* **OSPF** — Dynamic Interior Gateway Protocol used for routing within the enterprise network.
+* **HSRP** — First-hop redundancy protocol providing a highly available default gateway.
+* **LACP** — Link Aggregation Control Protocol used to combine multiple physical links into a logical link.
+* **BGP** — Exterior Gateway Protocol used to simulate routing between the enterprise network and external networks.
+* **Zone-Based Firewall** — Stateful traffic filtering between defined security zones.
+* **NAT** — Translation between private and public IPv4 address spaces.
+* **Layer 3 Routing** — IP-based forwarding between sites, VLANs, and network segments.
+
+## Architecture
+
+The network is organized into several logical components:
+
+### Agency A — Headquarters
+
+Agency A uses a **three-tier hierarchical architecture**:
+
+* **Core Layer:** Provides high-speed Layer 3 connectivity and redundant paths between major network segments.
+* **Distribution Layer:** Aggregates access switches, provides inter-VLAN routing, implements redundancy, and applies network policies.
+* **Access Layer:** Connects end-user devices and provides VLAN-based segmentation.
+
+Redundant uplinks between the distribution and access layers improve resilience and provide alternative forwarding paths in case of link or device failure.
+
+### Agency B — Branch Office
+
+Agency B uses a **collapsed-core architecture**, where core and distribution functions are consolidated.
+
+This approach reduces the number of required network devices while maintaining Layer 3 routing, VLAN segmentation, and connectivity with the headquarters.
+
+### Inter-Site Connectivity
+
+Agency A and Agency B are interconnected through a routed backbone.
+
+OSPF dynamically exchanges internal routes between the sites, allowing traffic to use available paths without relying exclusively on static routes.
+
+### Internet Edge and DMZ
+
+The Internet edge provides connectivity between the enterprise network and simulated external networks.
+
+Public-facing services are placed in a dedicated DMZ rather than directly inside the internal network. NAT and firewall policies control the communication between the Internet, DMZ, and internal networks.
 
 ## Documentation
 
-- [Design](design/) contains the diagram of the network
-- [Addressing](addressing/) explains how the whole network was addressed
-- [Configurations](configurations/) contains the configurations for each device
-- [Validation](validation/)
-- [Packet Tracer Files](packet-tracer/) contains .pkt lab file
-- [Changelog](CHANGELOG.md)
+* **[Design](design/)** — Network topology diagrams and architectural documentation.
+* **[Addressing](addressing/)** — IPv4 addressing plan, VLANs, subnets, and point-to-point links.
+* **[Configurations](configurations/)** — Device configurations for routers, switches, and security components.
+* **[Validation](validation/)** — Connectivity tests, routing verification, redundancy tests, and troubleshooting results.
+* **[Packet Tracer Files](packet-tracer/)** — Cisco Packet Tracer `.pkt` lab files.
+* **[Changelog](CHANGELOG.md)** — Project changes and configuration history.
 
 ## Limitations
 
-This is a simulated Cisco Packet Tracer environment.
-<Real limitation 1>
-<Real limitation 2>
+This project is implemented in a **Cisco Packet Tracer simulation environment**. Consequently, some behaviors and capabilities of production-grade network equipment are simplified or not fully represented.
+
+Key limitations include:
+
+* **Simplified protocol behavior:** Packet Tracer does not reproduce every feature and implementation detail available on real Cisco IOS/IOS-XE platforms.
+* **Limited security functionality:** The Zone-Based Firewall and other security mechanisms are simulated and do not provide the same depth of inspection, logging, performance, and threat detection as dedicated production security appliances.
+* **Simulated Internet connectivity:** External connectivity and BGP interactions represent a controlled laboratory environment rather than a connection to real Internet Service Providers.
+* **Hardware and performance constraints:** Device throughput, CPU utilization, memory consumption, and failure behavior cannot be evaluated realistically in Packet Tracer.
+* **Limited failure-domain testing:** Physical failures, hardware replacement, power failures, and real-world link degradation cannot be reproduced with the same fidelity as in a physical or virtualized laboratory.
 
 ## Future Improvements
 
-- <Improvement 1>
-- <Improvement 2>
+The architecture could be further developed by introducing:
+
+* **Enhanced network monitoring and observability** using SNMP, Syslog, NetFlow, and centralized monitoring platforms.
+* **IPv6 deployment** alongside IPv4 to support dual-stack operation and prepare the infrastructure for future addressing requirements.
+* **Advanced security controls**, including IDS/IPS, centralized authentication, VPN connectivity, and more granular access-control policies.
+* **Infrastructure automation** using Ansible, Python, or network automation frameworks to automate configuration deployment and validation.
+* **High-availability improvements** at the Internet edge through additional routers, links, and more advanced routing policies.
+* **Migration to a virtualized or emulated environment**, such as EVE-NG or GNS3, to validate behavior closer to real Cisco IOS/IOS-XE environments.
+* **Centralized configuration and backup management** to improve operational reliability and simplify recovery.
+* **Automated network validation** to continuously verify routing, reachability, redundancy, and security policies.
