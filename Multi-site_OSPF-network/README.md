@@ -1,45 +1,24 @@
-#Multi-site_OSPF-network
+## Multi-site_OSPF-network
 
 ## Overview
-
-<Explain in 3–5 lines what this lab demonstrates.>
+This network architecture connects a main headquarters (Agency A) and a branch office (Agency B) over a dedicated cross-site backbone with redundant internet edges (simulated internet connection). Agency A implements a fully redundant 3-tier switching layout (Core, Distribution, Access) to maximize uptime, whereas Agency B uses a cost-effective collapsed-core model. Internal departmental traffic is strictly segmented across custom VLANs (/27 subnets) using the address 172.16.0.0, while public-facing web and DNS servers are sandboxed in a dedicated DMZ. Point-to-point links are segmented across /30 subnets using 10.0.0.0 range while internet links use public IPs.
 
 ## Objectives
+The key objectives of this architecture are :
 
-- <Objective 1>
-- <Objective 2>
-- <Objective 3>
+High Availability: Eliminate single points of failure at HQ through dual-homed distribution uplinks and inter-site link aggregation. 
+Perimeter Security: Sandbox public HTTPS/DNS servers inside a dedicated DMZ to protect internal host data. 
+Network Segmentation: Reduced broadcast domains using isolated VLANs. 
+Cost-Optimized Scalability: Deploy a full 3-tier architecture at HQ for performance, paired with a collapsed core at the branch office to reduce hardware costs. Efficient IP Allocation: Use VLSM (/27 for departments and /30 for point-to-point transit links) to eliminate IPv4 waste.
 
 ## Technologies
 
-- Cisco Packet Tracer
-- VLAN
-- IPv4
-- Inter-VLAN Routing
-- DHCP
-- OSPF
-- SSH
-- <Other technologies actually used>
+This architecture using several technologies such us :
+- VLAN, IPv4 addressing , Inter-VLAN Routing, DHCP, OSPF, HSRP, LACP, BGP, Zone-Based Firewall, NAT, L3 routing
 
 ## Topology
 
-![Network topology](design/topology.png)
-
-## Main Components
-
-- Devices: <number and types>
-- VLANs: <number>
-- Routing protocol: <protocol>
-- Services: <DHCP, DNS, SSH, etc.>
-
-## Validation Summary
-
-- VLAN configuration: PASS
-- IP addressing: PASS
-- Routing: PASS
-- DHCP: PASS
-- Connectivity: PASS
-- SSH: PASS
+The diagram of this architecture can be found in Multi-site_OSPF-network/design/
 
 ## Documentation
 
