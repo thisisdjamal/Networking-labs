@@ -28,23 +28,20 @@ The main objectives of this architecture are:
 
 The architecture uses the following networking technologies and protocols:
 
-* **VLAN** — Logical segmentation of the Layer 2 network into separate broadcast domains.
-* **IPv4 & VLSM** — Structured and efficient IPv4 address allocation.
-* **Inter-VLAN Routing** — Layer 3 communication between departmental VLANs.
-* **DHCP** — Automatic assignment of IP configuration to end devices.
-* **OSPF** — Dynamic Interior Gateway Protocol used for routing within the enterprise network.
-* **HSRP** — First-hop redundancy protocol providing a highly available default gateway.
-* **LACP** — Link Aggregation Control Protocol used to combine multiple physical links into a logical link.
-* **BGP** — Exterior Gateway Protocol used to simulate routing between the enterprise network and external networks.
-* **Zone-Based Firewall** — Stateful traffic filtering between defined security zones.
-* **NAT** — Translation between private and public IPv4 address spaces.
-* **Layer 3 Routing** — IP-based forwarding between sites, VLANs, and network segments.
+* **VLAN** : Logical segmentation of the Layer 2 network into separate broadcast domains.
+* **IPv4 & VLSM** : Structured and efficient IPv4 address allocation.
+* **Inter-VLAN Routing** : Layer 3 communication between departmental VLANs.
+* **DHCP** : Automatic assignment of IP configuration to end devices.
+* **OSPF** : Dynamic Interior Gateway Protocol used for routing within the enterprise network.
+* **HSRP** : First-hop redundancy protocol providing a highly available default gateway.
+* **LACP** : Link Aggregation Control Protocol used to combine multiple physical links into a logical link.
+* **BGP** : Exterior Gateway Protocol used to simulate routing between the enterprise network and external networks.
+* **Zone-Based Firewall** : Stateful traffic filtering between defined security zones.
+* **NAT** : Translation between private and public IPv4 address spaces.
+* **Layer 3 Routing** : IP-based forwarding between sites, VLANs, and network segments.
 
-## Architecture
 
-The network is organized into several logical components:
-
-### Agency A — Headquarters
+### Agency A : Headquarters
 
 Agency A uses a **three-tier hierarchical architecture**:
 
@@ -54,7 +51,7 @@ Agency A uses a **three-tier hierarchical architecture**:
 
 Redundant uplinks between the distribution and access layers improve resilience and provide alternative forwarding paths in case of link or device failure.
 
-### Agency B — Branch Office
+### Agency B : Branch Office
 
 Agency B uses a **collapsed-core architecture**, where core and distribution functions are consolidated.
 
@@ -74,16 +71,16 @@ Public-facing services are placed in a dedicated DMZ rather than directly inside
 
 ## Documentation
 
-* **[Design](design/)** — Network topology diagrams and architectural documentation.
-* **[Addressing](addressing/)** — IPv4 addressing plan, VLANs, subnets, and point-to-point links.
-* **[Configurations](configurations/)** — Device configurations for routers, switches, and security components.
-* **[Validation](validation/)** — Connectivity tests, routing verification, redundancy tests, and troubleshooting results.
-* **[Packet Tracer Files](packet-tracer/)** — Cisco Packet Tracer `.pkt` lab files.
-* **[Changelog](CHANGELOG.md)** — Project changes and configuration history.
+* **[Design](design/)** : Network topology diagrams and architectural documentation.
+* **[Addressing](addressing/)** : IPv4 addressing plan, VLANs, subnets, and point-to-point links.
+* **[Configurations](configurations/)** : Device configurations for routers, switches, and security components.
+* **[Validation](validation/)** : Connectivity tests, routing verification, redundancy tests, and troubleshooting results.
+* **[Packet Tracer Files](packet-tracer/)** : Cisco Packet Tracer `.pkt` lab files.
+* **[Changelog](CHANGELOG.md)** : Project changes and configuration history.
 
 ## Limitations
 
-This project is implemented in a **Cisco Packet Tracer simulation environment**. Consequently, some behaviors and capabilities of production-grade network equipment are simplified or not fully represented.
+This project is implemented in a **Cisco Packet Tracer simulation environment**. Consequently, some behaviors and capabilities are simplified or not fully represented.
 
 Key limitations include:
 
