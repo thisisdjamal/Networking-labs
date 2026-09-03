@@ -20,7 +20,7 @@ The main objectives of this architecture are:
 * **Perimeter Security:** Isolate public-facing services within a dedicated DMZ and control traffic between security zones using a Zone-Based Firewall.
 * **Network Segmentation:** Separate departmental traffic into dedicated VLANs to reduce broadcast domains and improve traffic isolation.
 * **Dynamic Routing:** Use OSPF to automatically exchange internal routes and provide dynamic path selection across the multi-site infrastructure.
-* **Internet Edge Redundancy:** Simulate redundant Internet connectivity using multiple edge routers and BGP.
+* **Internet Edge Redundancy:** Simulate redundant Internet connectivity using two edge routers and BGP.
 * **Cost-Optimized Scalability:** Deploy a full three-tier architecture at the headquarters while using a collapsed-core model at the branch to reduce infrastructure complexity and hardware requirements.
 * **Efficient IPv4 Allocation:** Apply VLSM to allocate `/27` subnets to departmental networks and `/30` subnets to point-to-point transit links, minimizing IPv4 address waste.
 
@@ -87,21 +87,14 @@ This project is implemented in a **Cisco Packet Tracer simulation environment**.
 
 Key limitations include:
 
-* **Simplified protocol behavior:** Packet Tracer does not reproduce every feature and implementation detail available on real Cisco IOS/IOS-XE platforms.
-* **Limited security functionality:** The Zone-Based Firewall and other security mechanisms are simulated and do not provide the same depth of inspection, logging, performance, and threat detection as dedicated production security appliances.
-* **Simulated Internet connectivity:** External connectivity and BGP interactions represent a controlled laboratory environment rather than a connection to real Internet Service Providers.
-* **Hardware and performance constraints:** Device throughput, CPU utilization, memory consumption, and failure behavior cannot be evaluated realistically in Packet Tracer.
-* **Limited failure-domain testing:** Physical failures, hardware replacement, power failures, and real-world link degradation cannot be reproduced with the same fidelity as in a physical or virtualized laboratory.
+*
 
 ## Future Improvements
 
 The architecture could be further developed by introducing:
 
-* **Enhanced network monitoring and observability** using SNMP, Syslog, NetFlow, and centralized monitoring platforms.
-* **IPv6 deployment** alongside IPv4 to support dual-stack operation and prepare the infrastructure for future addressing requirements.
-* **Advanced security controls**, including IDS/IPS, centralized authentication, VPN connectivity, and more granular access-control policies.
-* **Infrastructure automation** using Ansible, Python, or network automation frameworks to automate configuration deployment and validation.
-* **High-availability improvements** at the Internet edge through additional routers, links, and more advanced routing policies.
 * **Migration to a virtualized or emulated environment**, such as EVE-NG or GNS3, to validate behavior closer to real Cisco IOS/IOS-XE environments.
+* **Enhanced network monitoring and observability** using SNMP, Syslog
+* **IPv6 deployment** alongside IPv4 to support dual-stack operation 
+* **High-availability improvements** 
 * **Centralized configuration and backup management** to improve operational reliability and simplify recovery.
-* **Automated network validation** to continuously verify routing, reachability, redundancy, and security policies.
