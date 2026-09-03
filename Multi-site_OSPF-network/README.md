@@ -92,6 +92,7 @@ The architecture could be further developed by introducing:
 
 * **Migration to a virtualized or emulated environment**, such as EVE-NG or GNS3, to validate behavior closer to real Cisco IOS/IOS-XE environments.
 * **Enhanced network monitoring and observability** using SNMP, Syslog
+* **Implementation of a defense-in-depth security architecture** by deploying a next-generation firewall such as FortiGate right after the edge routers to  strengthen security and provide intrusion prevention
 * **IPv6 deployment** alongside IPv4 to support dual-stack operation 
 * **High-availability improvements** 
 * **Centralized configuration and backup management** to improve operational reliability and simplify recovery.
