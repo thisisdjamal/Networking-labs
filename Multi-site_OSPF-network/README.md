@@ -41,7 +41,7 @@ The architecture uses the following networking technologies and protocols:
 * **Layer 3 Routing** : IP-based forwarding between sites, VLANs, and network segments.
 
 
-### Agency A — Headquarters
+### Agency A : Headquarters
 
 Agency A uses a **three-tier hierarchical architecture**:
 
@@ -51,7 +51,7 @@ Agency A uses a **three-tier hierarchical architecture**:
 
 Redundant uplinks between the distribution and access layers improve resilience and provide alternative forwarding paths in case of link or device failure.
 
-### Agency B — Branch Office
+### Agency B : Branch Office
 
 Agency B uses a **collapsed-core architecture**, where core and distribution functions are consolidated.
 
